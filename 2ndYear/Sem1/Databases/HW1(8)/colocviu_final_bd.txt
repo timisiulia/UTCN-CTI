@@ -1,0 +1,167 @@
+CREATE TABLE Film
+( titlu varchar (50) ,
+an date,
+gen varchar(15),
+studiou varchar(50),
+id_producator double,
+durata double
+);
+CREATE TABLE Distributie
+( titlu_film varchar (50),
+an_film date,
+id_actor double
+);
+CREATE TABLE Persoana
+( id_persoana double ,
+nume varchar (100),
+adresa varchar (50),
+email varchar (50),
+sex varchar (1),
+data_nasterii date,
+castig_net double,
+moneda varchar(8)
+);
+CREATE TABLE Studiou
+( nume varchar (100),
+adresa varchar (50),
+id_presedinte double
+);
+
+ALTER TABLE Film
+ADD CONSTRAINT Film_PK PRIMARY KEY (titlu, an);
+
+ALTER TABLE Distributie
+ADD CONSTRAINT Distributie_PK PRIMARY KEY (titlu_film, an_film, id_actor);
+
+ALTER TABLE Persoana
+ADD CONSTRAINT Persoana_PK PRIMARY KEY (id_persoana);
+
+ALTER TABLE Studiou
+ADD CONSTRAINT Studiou_PK PRIMARY KEY (nume);
+
+ALTER TABLE Distributie
+ADD CONSTRAINT Distributie_FK_titlu
+  FOREIGN KEY (titlu_film, an_film)
+  REFERENCES Film (titlu, an);
+
+
+
+ALTER TABLE Studiou
+ADD CONSTRAINT Studio_FK_id
+  FOREIGN KEY (id_presedinte)
+  REFERENCES Persoana (id_persoana);
+
+
+ALTER TABLE Distributie
+ADD CONSTRAINT Distributie_FK_id
+  FOREIGN KEY (id_actor)
+  REFERENCES Persoana (id_persoana);
+
+ALTER TABLE Film 
+ADD CONSTRAINT Film_FK_id
+   FOREIGN KEY (id_producator)
+  REFERENCES Persoana (id_persoana);
+
+
+INSERT INTO Persoana
+VALUES
+(23,'Jeff Bezos','STR. Muresului, NR. 10, Cluj-Napoca, Cluj ',
+'jeff@yahoo.com','M','1964-01-12',1000001,'USD');
+
+INSERT INTO Persoana
+VALUES
+(1,'Pop Andrei','STR. Crinului, NR. 10, Cluj-Napoca, Cluj ',
+'pop_andrei@yahoo.com','M','2000-06-05',3000,'RON');
+
+INSERT INTO Persoana
+VALUES
+(22,'Humphrey Bogart','STR. Siretului, NR. 4, Cluj-Napoca, Cluj ',
+'bogart@yahoo.com','M','1970-07-23',22000,'EUR');
+
+INSERT INTO Persoana
+VALUES
+(11,'Hal B. Wallis','STR. Oasului, NR. 10, Cluj-Napoca, Cluj ',
+'bwallis@yahoo.com','M','1999-07-11',15000,'EUR');
+
+INSERT INTO Persoana
+VALUES
+(17,'Rus Dragos','STR. Zambilelor, NR. 76, Cluj-Napoca, Cluj ',
+'dragos@yahoo.com','M','2000-08-08',1500,'RON');
+
+INSERT INTO Persoana
+VALUES
+(9,'Tibre Diana','STR. Marului, NR. 12, Cluj-Napoca, Cluj ',
+'dianat@yahoo.com','F','2001-04-02',14999,'EUR');
+
+INSERT INTO Persoana
+VALUES
+(15,'Alexandra Daddario','STR. Fagului, NR. 14, Cluj-Napoca, Cluj ',
+'ale@yahoo.com','F','1986-03-16',1500,'EUR');
+
+
+INSERT INTO Studiou
+VALUES
+('Warner Bros.','Studio Tour Dr, Leavesden, Watford WD25 7LR',1);
+
+INSERT INTO Studiou
+VALUES
+('Disney','500 S Buena Vista St, Burbank, CA 91521',9);
+
+INSERT INTO Studiou
+VALUES
+('Universal','6000 Universal Blvd, Orlando, FL 32819',11);
+
+INSERT INTO Studiou
+VALUES
+('UK','London, Burbank, CA 91521',9);
+
+INSERT INTO Film
+VALUES
+('Barry','2000-08-08', 'Actiune','Universal',1,120);
+
+INSERT INTO Film
+VALUES
+('The Maltese Falcon','1941-09-08','Drama','Warner Bros.',11,100);
+
+INSERT INTO Film
+VALUES
+('Bohemian Rhapsody','2018-09-08',
+ 'Biografic','Disney',17,134);
+
+INSERT INTO Film
+VALUES
+('Avatar','2009-09-09','SF','Disney',17,162);
+
+INSERT INTO Film
+VALUES
+('Inception','2010-09-14','SF','Disney',17,163);
+
+INSERT INTO Film
+VALUES
+('Finding Nemo','2003-09-09','copii','Disney',9,160);
+
+INSERT INTO Film
+VALUES
+('Finding Dory','2003-09-09','copii','Disney',9,160);
+
+INSERT INTO Distributie
+VALUES
+('The Maltese Falcon','1941-09-08',22);
+
+INSERT INTO Distributie
+VALUES
+('Inception','2010-09-14',17);
+
+
+INSERT INTO Distributie
+VALUES
+('Inception','2010-09-14',9);
+
+INSERT INTO Distributie
+VALUES
+('Avatar','2009-09-09',17);
+
+
+ALTER TABLE Persoana
+drop column email;
+
