@@ -1,0 +1,24 @@
+assign(max_seconds, 30).
+set(binary_resolution).
+set(print_gen).
+%Presupunem ca ANCA si FLORIN sunt soti si au un copil pe nume ALEX. Fratele
+%lui FLORIN, GEORGE are un copil pe nume MARIUS. MARIUS are o sora pe nume %maria. MARIA si ALEX sunt verisori?
+formulas(assumptions).
+ANCA.
+FLORIN.
+ALEX.
+GEORGE.
+MARIUS.
+MARIA.
+
+ANCA & FLORIN -> ALEX.
+
+FLORIN & GEORGE -> FRATI.
+GEORGE -> MARIUS .
+MARIUS & MARIA -> FRATI.
+
+end_of_list.
+
+formulas(goals).
+ALEX -> MARIA.
+end_of_list.
