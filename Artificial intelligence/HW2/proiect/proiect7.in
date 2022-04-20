@@ -1,0 +1,17 @@
+assign(max_seconds, 30).
+set(binary_resolution).
+set(print_gen).
+
+formulas(assumptions).
+bebelus -> irational.
+omInconstient -> nufacefatalaaligator.
+irational -> omInconstient.
+alex -> bebelus.
+
+
+
+end_of_list.
+
+formulas(goals).
+alex -> nufacefatalaaligator.
+end_of_list.

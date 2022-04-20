@@ -1,0 +1,21 @@
+assign(max_seconds, 30).
+set(binary_resolution).
+set(print_gen).
+%1.    Porky is a pig.
+%2.    Pigs are animals.
+%3.    Pigs are fat.
+%4.    No fat animals run fast.
+%∴Porky does not run fast.
+
+formulas(assumptions).
+
+porky -> pig.
+pig -> animal.
+pig -> fat.
+fat -> -run.
+
+end_of_list.
+
+formulas(goals).
+porky -> -run.
+end_of_list.

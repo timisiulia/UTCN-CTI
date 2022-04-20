@@ -1,0 +1,23 @@
+assign(max_seconds, 30).
+set(binary_resolution).
+set(print_gen).
+
+% pasarile sunt animale
+% unele animale zboara  
+% unele pasari mananca nuci
+% randunlele sunt pasari
+% vrem sa demonstram ca randunelel zboara si mananca nuci
+formulas(assumptions).
+
+p -> a.
+a -> fly.
+p -> n.
+r -> p.
+
+end_of_list.
+
+formulas(goals).
+
+r -> fly & n.
+
+end_of_list.
