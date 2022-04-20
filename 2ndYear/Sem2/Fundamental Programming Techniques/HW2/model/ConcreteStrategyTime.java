@@ -1,0 +1,25 @@
+package model;
+
+import model.Server;
+import model.Strategy;
+
+import java.util.List;
+public class ConcreteStrategyTime implements Strategy {
+    public void add_Task (List<Server> servers, Task t)
+    {
+        int tmin = 100000;
+        int id = 0;
+        for(Server i : servers)
+            if(i.getWaitingTime() < tmin) {
+                tmin = i.getWaitingTime();
+                id = i.getId();
+            }
+        for(Server i : servers) {
+            if(i.getId() == id) ;
+            i.add_Task(t);
+        }
+    }
+}
+
+
+
